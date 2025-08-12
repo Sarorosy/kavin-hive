@@ -125,7 +125,7 @@ const Hero = () => {
       }}
       id="curve"
     >
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black/20" id="curve"></div>
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-8 items-center">
