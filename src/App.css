@@ -1,0 +1,20 @@
+#root {
+  max-width: 100%;
+}
+
+#curve{
+    border-bottom-left-radius: 100% 70px;
+  border-bottom-right-radius: 100% 70px;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('./assets/circular-std-medium-500.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+.body {
+  font-family: 'CircularStd', sans-serif;
+}
