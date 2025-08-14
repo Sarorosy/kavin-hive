@@ -202,13 +202,13 @@ const Header = ({ onBookTourClick }) => {
             >
               <span className="hover:underline cursor-pointer transition-all duration-200">Centres</span>
               {centresOpen && (
-                <div className="absolute left-0 top-7 mt-2 w-96 bg-black text-white rounded-sm z-20 shadow-xl">
+                <div className="absolute left-0 top-7 mt-2 w-md bg-black text-white rounded-sm z-20 shadow-xl">
                   <div className="absolute top-0 left-1 -translate-y-full w-0 h-0 border-l-[10px] border-r-[10px] border-b-[20px] border-l-transparent border-r-transparent border-b-black"></div>
                   <div className="absolute top-0 left-5 -translate-y-full w-full h-0  border-b-[20px] opacity-0 bg-transparent z-19"></div>
 
                   <div className="flex">
                     {/* Left side - Cities */}
-                    <div className="w-1/2 p-4 border-r border-gray-600">
+                    <div className="w-1/3 p-4 border-r border-gray-600">
                       <h3 className="text-xs uppercase tracking-wide text-gray-300 mb-3">
                         Cities
                       </h3>
@@ -225,7 +225,7 @@ const Header = ({ onBookTourClick }) => {
                     </div>
 
                     {/* Right side - Branches */}
-                    <div className="w-1/2 p-4">
+                    <div className="w-2/3 p-4">
                       <h3 className="text-xs uppercase tracking-wide text-gray-300 mb-3">
                         Branches
                       </h3>
@@ -275,6 +275,7 @@ const Header = ({ onBookTourClick }) => {
               {infoOpen && (
                 <div className="absolute left-0 top-7 mt-2 w-44 bg-black text-white rounded-sm z-20 shadow-xl">
                   <div className="absolute top-0 left-1 -translate-y-full w-0 h-0 border-l-[10px] border-r-[10px] border-b-[20px] border-l-transparent border-r-transparent border-b-black"></div>
+                  <div className="absolute top-0 left-5 -translate-y-full w-full h-0  border-b-[20px] opacity-0 bg-transparent z-19"></div>
 
                   <div className="grid grid-cols-2 px-4 py-3 space-y-1">
                     <button onClick={() => navigate("/news")} className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer text-white">

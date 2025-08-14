@@ -3,8 +3,8 @@
 }
 
 #curve{
-    border-bottom-left-radius: 100% 70px;
-  border-bottom-right-radius: 100% 70px;
+    border-bottom-left-radius: 100% 80px;
+  border-bottom-right-radius: 100% 80px;
 }
 
 @font-face {
@@ -17,4 +17,8 @@
 
 .body {
   font-family: 'CircularStd', sans-serif;
+}
+
+.hei-98{
+  height: 98%;
 }
