@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Calendar, User, Phone, Menu, X } from "lucide-react";
 import logoTransparent from '../assets/logo-transparent.png';
 
+import chennai from '../assets/chennai.png';
+import bangalore from '../assets/bangalore.png';
+import hyderabad from '../assets/hyderabad.png';
+import pune from '../assets/pune.png';
+
 const Header = ({ onBookTourClick }) => {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,6 +35,13 @@ const Header = ({ onBookTourClick }) => {
     Hyderabad: ["The Hive at Gachibowli, Hyderabad"],
     Pune: ["The Hive at Mills, Pune"],
   };
+
+   const cityImages = {
+  Chennai: chennai,
+  Bangalore: bangalore,
+  Hyderabad: hyderabad,
+  Pune: pune,
+};
 
   // Offerings data
   const offerings = [
@@ -215,10 +227,11 @@ const Header = ({ onBookTourClick }) => {
                       {Object.keys(cityBranches).map((city) => (
                         <div
                           key={city}
-                          className={`py-2 px-2 cursor-pointer hover:bg-gray-800 rounded transition-colors ${hoveredCity === city ? "bg-gray-800" : ""
+                          className={`py-2 px-2 cursor-pointer hover:bg-gray-800 rounded transition-colors flex items-center justify-start ${hoveredCity === city ? "bg-gray-800" : ""
                             }`}
                           onMouseEnter={() => setHoveredCity(city)}
                         >
+                          <img src={cityImages[city]} alt={city} className="w-8 h-8 mr-2" />
                           {city}
                         </div>
                       ))}
