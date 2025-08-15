@@ -20,28 +20,57 @@ const Header = ({ onBookTourClick }) => {
   const infoRef = useRef(null);
   const centresRef = useRef(null);
   const workspacesRef = useRef(null);
-
-  // City to branches mapping
-  const cityBranches = {
-    Chennai: [
-      "The Hive at Anna Nagar, Chennai",
-      "The Hive at OMR, Chennai",
-      "The Hive at SKCL Guindy, Chennai",
-    ],
-    Bangalore: [
-      "The Hive at Whitefield, Bangalore",
-      "The Hive at PTP, Bengaluru",
-    ],
-    Hyderabad: ["The Hive at Gachibowli, Hyderabad"],
-    Pune: ["The Hive at Mills, Pune"],
+  const citiesData = {
+    Chennai: {
+      image: chennai,
+      branches: [
+        {
+          name: "The Hive at Anna Nagar, Chennai",
+          route: "/chennai/anna-nagar",
+        },
+        {
+          name: "The Hive at OMR, Chennai",
+          route: "/chennai/omr",
+        },
+        {
+          name: "The Hive at SKCL Guindy, Chennai",
+          route: "/chennai/skcl-guindy",
+        },
+      ],
+    },
+    Bangalore: {
+      image: bangalore,
+      branches: [
+        {
+          name: "The Hive at Whitefield, Bangalore",
+          route: "/bangalore/whitefield",
+        },
+        {
+          name: "The Hive at PTP, Bengaluru",
+          route: "/bangalore/ptp",
+        },
+      ],
+    },
+    Hyderabad: {
+      image: hyderabad,
+      branches: [
+        {
+          name: "The Hive at Gachibowli, Hyderabad",
+          route: "/hyderabad/gachibowli",
+        },
+      ],
+    },
+    Pune: {
+      image: pune,
+      branches: [
+        {
+          name: "The Hive at Mills, Pune",
+          route: "/pune/mills",
+        },
+      ],
+    },
   };
 
-   const cityImages = {
-  Chennai: chennai,
-  Bangalore: bangalore,
-  Hyderabad: hyderabad,
-  Pune: pune,
-};
 
   // Offerings data
   const offerings = [
@@ -151,8 +180,8 @@ const Header = ({ onBookTourClick }) => {
                         <div
                           key={offering.title}
                           className={`py-2 px-2 cursor-pointer hover:bg-gray-800 rounded transition-colors ${hoveredOffering === offering.title
-                              ? "bg-gray-800"
-                              : ""
+                            ? "bg-gray-800"
+                            : ""
                             }`}
                           onMouseEnter={() =>
                             setHoveredOffering(offering.title)
@@ -180,10 +209,10 @@ const Header = ({ onBookTourClick }) => {
                               <button
                                 key={index}
                                 onClick={() => navigate(`/workspaces/${item
-                                    .toLowerCase()
-                                    .replace(/&/g, "and")
-                                    .replace(/[^a-z0-9]+/g, "-")
-                                    .replace(/^-+|-+$/g, "")
+                                  .toLowerCase()
+                                  .replace(/&/g, "and")
+                                  .replace(/[^a-z0-9]+/g, "-")
+                                  .replace(/^-+|-+$/g, "")
                                   }`)}
                                 className="block w-full text-left py-1 px-2 hover:bg-gray-800 rounded text-sm transition-colors bg-transparent border-none cursor-pointer text-white"
                               >
@@ -224,15 +253,14 @@ const Header = ({ onBookTourClick }) => {
                       <h3 className="text-xs uppercase tracking-wide text-gray-300 mb-3">
                         Cities
                       </h3>
-                      {Object.keys(cityBranches).map((city) => (
+                      {Object.keys(citiesData).map((city) => (
                         <div
                           key={city}
-                          className={`py-2 px-2 cursor-pointer hover:bg-gray-800 rounded transition-colors flex items-center justify-start ${hoveredCity === city ? "bg-gray-800" : ""
-                            }`}
+                          className={`py-2 px-2 cursor-pointer hover:bg-gray-800 rounded transition-colors flex items-center justify-between ${hoveredCity === city ? "bg-gray-800" : ""}`}
                           onMouseEnter={() => setHoveredCity(city)}
                         >
-                          <img src={cityImages[city]} alt={city} className="w-8 h-8 mr-2" />
                           {city}
+                          <img src={citiesData[city].image} alt={city} className="w-8 h-8 ml-1" />
                         </div>
                       ))}
                     </div>
@@ -242,18 +270,15 @@ const Header = ({ onBookTourClick }) => {
                       <h3 className="text-xs uppercase tracking-wide text-gray-300 mb-3">
                         Branches
                       </h3>
-                      {hoveredCity &&
-                        cityBranches[hoveredCity] ? (
+                      {hoveredCity ? (
                         <div className="space-y-2">
-                          {cityBranches[hoveredCity].map((branch, index) => (
+                          {citiesData[hoveredCity].branches.map((branch, index) => (
                             <button
                               key={index}
-                              onClick={() => navigate(`/centres/${branch
-                                .toLowerCase()
-                                .replace(/[^a-z0-9]/g, "-")}`)}
+                              onClick={() => navigate(branch.route)}
                               className="block w-full text-left py-1 px-2 hover:bg-gray-800 rounded text-sm transition-colors bg-transparent border-none cursor-pointer text-white"
                             >
-                              {branch}
+                              {branch.name}
                             </button>
                           ))}
                         </div>
@@ -387,10 +412,10 @@ const Header = ({ onBookTourClick }) => {
                       <button
                         key={index}
                         onClick={() => navigate(`/workspaces/${item
-                            .toLowerCase()
-                            .replace(/&/g, "and")
-                            .replace(/[^a-z0-9]+/g, "-")
-                            .replace(/^-+|-+$/g, "")
+                          .toLowerCase()
+                          .replace(/&/g, "and")
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "")
                           }`)}
                         className={`block w-full text-left pl-2 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer ${isScrolled ? 'text-gray-600' : 'text-gray-300'
                           }`}
@@ -414,27 +439,29 @@ const Header = ({ onBookTourClick }) => {
             </button>
             {centresOpen && (
               <div className="pl-4 space-y-2 text-sm">
-                {Object.entries(cityBranches).map(([city, branches]) => (
+                {Object.entries(citiesData).map(([city, data]) => (
                   <div key={city} className="space-y-1">
-                    <div className={`font-medium ${isScrolled ? 'text-gray-700' : 'text-gray-200'}`}>
+                    <div
+                      className={`font-medium ${isScrolled ? "text-gray-700" : "text-gray-200"
+                        }`}
+                    >
                       {city}
                     </div>
-                    {branches.map((branch, index) => (
+                    {data.branches.map((branch, index) => (
                       <button
                         key={index}
-                        onClick={() => navigate(`/centres/${branch
-                          .toLowerCase()
-                          .replace(/[^a-z0-9]/g, "-")}`)}
-                        className={`block w-full text-left pl-2 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer ${isScrolled ? 'text-gray-600' : 'text-gray-300'
+                        onClick={() => navigate(branch.route)}
+                        className={`block w-full text-left pl-2 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer ${isScrolled ? "text-gray-600" : "text-gray-300"
                           }`}
                       >
-                        {branch}
+                        {branch.name}
                       </button>
                     ))}
                   </div>
                 ))}
               </div>
             )}
+
           </div>
 
           {/* Info Dropdown in mobile - Click to toggle */}

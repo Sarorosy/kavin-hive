@@ -8,7 +8,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col w-full">
       <Header />
-      <main className="flex-grow w-full" id="scroll-container">
+      <main className="flex-grow w-full pt-6" id="scroll-container">
         <div className="container m-0 max-w-[100%]">
           <Outlet />
         </div>

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import LandlordRelationship from "../pages/landlord/LandlordRelationship";
+import Center from "../pages/center/Center";
 
 
 
@@ -20,6 +21,7 @@ export default function AppRouter() {
         <Route element={<PrivateRoute />}>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/:city/:branch" element={<Center />} />
             <Route path="/landlord-relationships" element={<LandlordRelationship />} />
           </Route>
         </Route>
