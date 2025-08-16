@@ -28,8 +28,8 @@ import office from "../assets/office-png.png";
 // Background images
 const heroImages = [
   "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1920&q=80"
+  "https://images.unsplash.com/photo-1532916123995-50bad0fc528e?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1606836576983-8b458e75221d?auto=format&fit=crop&w=1920&q=80"
 ];
 
 // Workspace types
