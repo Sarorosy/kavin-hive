@@ -11,17 +11,33 @@ import img360 from "../../assets/360/360.jpg";
 import img3602 from "../../assets/360/1.jpg";
 import img3603 from "../../assets/360/2.jpg";
 import img3605 from "../../assets/360/4.jpg";
+import ChoosePreference from "./ChoosePreference";
+
+import one from '../../assets/featured/1.jpg';
+import two from '../../assets/featured/2.jpg';
+import three from '../../assets/featured/3.jpg';
+import four from '../../assets/featured/4.jpg';
+import five from '../../assets/featured/5.jpg';
+import six from '../../assets/featured/6.jpg';
 
 function Center() {
   const { city, branch } = useParams();
   const navigate = useNavigate();
 
+  const centerImages = [
+            one,
+            two,
+            three,
+            four,
+            five,
+            six
+          ]
   const panoramas = [img3605, img360, img3602, img3603];
 
   const cityData = centersData[city];
   const branchData = cityData?.branches[branch];
 
-  if (!cityData || !branchData) {
+  if (!cityData || (branch && !branchData)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white text-black">
         <div className="text-center p-12 bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 shadow-2xl">
@@ -42,6 +58,7 @@ function Center() {
       </div>
     );
   }
+  console.log('cityData', cityData)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
@@ -77,7 +94,7 @@ function Center() {
         <div className="relative pt-16 pb-8 px-4 md:px-8 mx-auto max-w-[1600px]">
           {/* Breadcrumb */}
           <div className="mb-6 md:mb-8 relative z-20">
-            <Breadcrumb items={branchData.breadcrumb} />
+            <Breadcrumb items={branchData ? branchData.breadcrumb : cityData.breadcrumb} />
           </div>
 
           {/* Slider */}
@@ -85,10 +102,10 @@ function Center() {
             {/* Floating Text Card */}
             <div className="mb-6 md:mb-10 lg:absolute lg:top-1/2 lg:left-8 lg:transform lg:-translate-y-1/2 lg:w-[40%] rounded-xl p-4 sm:p-6 z-20 bg-white text-[#092e46] shadow-md">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-gray-900 via-black font-serif to-purple-900 bg-clip-text text-transparent leading-tight">
-                {branchData.name}
+                {branchData ? branchData.name : cityData.name}
               </h1>
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-light">
-                {branchData.details}
+                {branchData ? branchData.details : cityData.description}
               </p>
             </div>
 
@@ -109,7 +126,7 @@ function Center() {
               loop
               className="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[600px] rounded-xl overflow-hidden"
             >
-              {branchData.images.map((img, idx) => (
+              {branchData ? branchData.images.map((img, idx) => (
                 <SwiperSlide key={idx}>
                   <div className="relative h-full group/slide">
                     <img
@@ -122,7 +139,22 @@ function Center() {
                     </div>
                   </div>
                 </SwiperSlide>
-              ))}
+              )) : (
+                centerImages.map((img, idx) => (
+                <SwiperSlide key={idx}>
+                  <div className="relative h-full group/slide">
+                    <img
+                      src={img}
+                      alt={`${cityData.name} ${idx + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-700"
+                    />
+                    <div className="absolute top-4 right-4 px-2 py-1 bg-black/50 backdrop-blur-lg rounded-full text-white text-xs sm:text-sm font-medium">
+                      {idx + 1} / {centerImages.length}
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))
+              )}
             </Swiper>
 
             {/* Navigation Arrows */}
@@ -136,6 +168,7 @@ function Center() {
         </div>
       </div>
 
+      <ChoosePreference cityData={cityData} centersData={centersData}/>
       <Viewer360 images={panoramas} />
     </div>
   );

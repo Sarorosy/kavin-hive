@@ -13,7 +13,13 @@ import six from '../assets/featured/6.jpg';
 
 export const centersData = {
   chennai: {
+    name:"Chennai",
+    description : "Find flexible coworking spaces in Chennai with ready-to-move and customizable options. Located in prime areas, built for teams of any size.",
     image: chennai,
+    breadcrumb: [
+          { label: "Home", path: "/" },
+          { label: "Coworking Spaces in Chennai"}
+        ],
     branches: {
       "anna-nagar": {
         name: "The Hive at Anna Nagar, Chennai",
@@ -72,7 +78,13 @@ export const centersData = {
     }
   },
   bangalore: {
+    name:"Bangalore",
+    description : "Discover coworking spaces in Bangalore’s top hubs. From startups to enterprises, our offices offer flexibility, premium amenities, and great connectivity.",
     image: bangalore,
+    breadcrumb: [
+          { label: "Home", path: "/" },
+          { label: "Coworking Spaces in Bangalore" }
+        ],
     branches: {
       "whitefield": {
         name: "The Hive at Whitefield, Bangalore",
@@ -113,7 +125,13 @@ export const centersData = {
     }
   },
   hyderabad: {
+    name:"Hyderabad",
+    description : "Set up at our coworking space in Gachibowli, Hyderabad. With modern infrastructure and scalable offices, we support businesses of all sizes.",
     image: hyderabad,
+    breadcrumb: [
+          { label: "Home", path: "/" },
+          { label: "Coworking Spaces in Hyderabad" }
+        ],
     branches: {
       "gachibowli": {
         name: "The Hive at Gachibowli, Hyderabad",
@@ -136,7 +154,13 @@ export const centersData = {
     }
   },
   pune: {
+    name:"Pune",
+    description : "Work smarter at our coworking space in The Mills, Pune. Flexible offices, premium amenities, and a collaborative environment for growing teams.",
     image: pune,
+     breadcrumb: [
+          { label: "Home", path: "/" },
+          { label: "Coworking Spaces in Pune" }
+        ],
     branches: {
       "mills": {
         name: "The Hive at Mills, Pune",

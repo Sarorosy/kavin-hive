@@ -22,6 +22,7 @@ export default function AppRouter() {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/:city/:branch" element={<Center />} />
+            <Route path="/:city" element={<Center />} />
             <Route path="/landlord-relationships" element={<LandlordRelationship />} />
           </Route>
         </Route>
