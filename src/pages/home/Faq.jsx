@@ -22,7 +22,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="bg-gray-50 py-8">
+    <section className="bg-gray-100 py-8">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Left title */}
         <div>
@@ -39,12 +39,12 @@ export default function Faq() {
             return (
               <div key={idx} className="bg-white rounded-md shadow-sm overflow-hidden">
                 <button
-                  className="w-full flex justify-between items-center px-6 py-4 text-left"
+                  className="w-full flex justify-between items-center px-6 py-4 text-left cursor-pointer"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                 >
                   <span className="font-medium text-gray-800">{item.q}</span>
                   <motion.div
-                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                   >
                     <ChevronDown className="w-5 h-5 text-gray-500" />

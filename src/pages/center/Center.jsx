@@ -1,5 +1,5 @@
 // src/pages/Center.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -12,6 +12,7 @@ import img3602 from "../../assets/360/1.jpg";
 import img3603 from "../../assets/360/2.jpg";
 import img3605 from "../../assets/360/4.jpg";
 import ChoosePreference from "./ChoosePreference";
+import Faq from '../home/Faq';
 
 import one from '../../assets/featured/1.jpg';
 import two from '../../assets/featured/2.jpg';
@@ -19,6 +20,7 @@ import three from '../../assets/featured/3.jpg';
 import four from '../../assets/featured/4.jpg';
 import five from '../../assets/featured/5.jpg';
 import six from '../../assets/featured/6.jpg';
+import ContactForm from "../../components/ContactForm";
 
 function Center() {
   const { city, branch } = useParams();
@@ -36,28 +38,17 @@ function Center() {
 
   const cityData = centersData[city];
   const branchData = cityData?.branches[branch];
+ useEffect(() => {
+    if (!cityData || (branch && !branchData)) {
+      navigate("/404", { replace: true });
+    }
+  }, [city, branch, cityData, branchData, navigate]);
 
+  // Prevent render before redirect
   if (!cityData || (branch && !branchData)) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white text-black">
-        <div className="text-center p-12 bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 shadow-2xl">
-          <div className="w-20 h-20 mx-auto mb-6 bg-red-500 rounded-full flex items-center justify-center">
-            <TriangleAlert />
-          </div>
-          <h1 className="text-3xl font-bold mb-4 ">Center Not Found</h1>
-          <p className="/80 mb-8">
-            The center you're looking for doesn't exist or has been moved.
-          </p>
-          <button
-            onClick={() => navigate("/")}
-            className="group relative px-8 py-4 bg-black text-white rounded-full font-semibold transition-all duration-300 transform "
-          >
-            <span className="relative z-10">Return Home</span>
-          </button>
-        </div>
-      </div>
-    );
+    return null;
   }
+
   console.log('cityData', cityData)
 
   return (
@@ -98,7 +89,7 @@ function Center() {
           </div>
 
           {/* Slider */}
-          <div className="relative w-full md:w-[90%] mx-auto rounded-2xl overflow-hidden shadow-2xl bg-white p-2">
+          <div className="relative w-full md:w-[90%] mx-auto rounded overflow-hidden shadow-2xl bg-white p-2">
             {/* Floating Text Card */}
             <div className="mb-6 md:mb-10 lg:absolute lg:top-1/2 lg:left-8 lg:transform lg:-translate-y-1/2 lg:w-[40%] rounded-xl p-4 sm:p-6 z-20 bg-white text-[#092e46] shadow-md">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-gray-900 via-black font-serif to-purple-900 bg-clip-text text-transparent leading-tight">
@@ -124,7 +115,7 @@ function Center() {
               }}
               autoplay={{ delay: 5000, disableOnInteraction: false }}
               loop
-              className="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[600px] rounded-xl overflow-hidden"
+              className="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[600px] rounded overflow-hidden"
             >
               {branchData ? branchData.images.map((img, idx) => (
                 <SwiperSlide key={idx}>
@@ -170,6 +161,8 @@ function Center() {
 
       <ChoosePreference cityData={cityData} centersData={centersData}/>
       <Viewer360 images={panoramas} />
+      <ContactForm type="regular" />
+      <Faq />
     </div>
   );
 }

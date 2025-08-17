@@ -8,6 +8,7 @@ import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import LandlordRelationship from "../pages/landlord/LandlordRelationship";
 import Center from "../pages/center/Center";
+import NotFound from "../components/NotFound";
 
 
 
@@ -16,7 +17,7 @@ export default function AppRouter() {
     <Router>
       <ScrollToTop />
       <Routes>
-        
+
 
         <Route element={<PrivateRoute />}>
           <Route element={<Layout />}>
@@ -24,9 +25,12 @@ export default function AppRouter() {
             <Route path="/:city/:branch" element={<Center />} />
             <Route path="/:city" element={<Center />} />
             <Route path="/landlord-relationships" element={<LandlordRelationship />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/404" element={<NotFound />} />
           </Route>
         </Route>
-        
+
+
       </Routes>
     </Router>
   );

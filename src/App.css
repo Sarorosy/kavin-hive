@@ -72,3 +72,7 @@ body {
 .pause-marquee:hover {
   animation-play-state: paused;
 }
+body::selection{
+  background: black;
+  color: white;
+}

@@ -51,7 +51,7 @@ const ChoosePreference = ({ cityData, centersData }) => {
         <div className="w-full px-4 md:px-12 py-8">
             {/* Filters */}
             <div className="mb-6">
-                <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+                <h2 className="text-2xl md:text-3xl font-semibold mb-4 font-serif">
                     Choose your preferences
                 </h2>
                 <div className="flex flex-wrap gap-4 items-center">
@@ -181,7 +181,7 @@ const ChoosePreference = ({ cityData, centersData }) => {
 
                 {/* Right - Map */}
                 {showMap && (
-                    <div className="h-[500px] w-full border rounded-lg overflow-hidden">
+                    <div className="h-[500px] w-full border rounded-lg overflow-hidden sticky top-0">
                         {filteredBranches.length > 0 ? (
                             <iframe
                                 src={filteredBranches[0][1].map}

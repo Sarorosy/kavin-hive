@@ -30,8 +30,22 @@ export default function Members() {
     { id: 11, src: eleven, alt: "Sponsor 11" },
   ];
 
+    const sponsorsClone = [
+    { id: 12, src: one, alt: "Sponsor 1" },
+    { id: 13, src: two, alt: "Sponsor 2" },
+    { id: 14, src: three, alt: "Sponsor 3" },
+    { id: 15, src: four, alt: "Sponsor 4" },
+    { id: 16, src: five, alt: "Sponsor 5" },
+    { id: 17, src: six, alt: "Sponsor 6" },
+    { id: 18, src: seven, alt: "Sponsor 7" },
+    { id: 19, src: eight, alt: "Sponsor 8" },
+    { id: 20, src: nine, alt: "Sponsor 9" },
+    { id: 21, src: ten, alt: "Sponsor 10" },
+    { id: 22, src: eleven, alt: "Sponsor 11" },
+  ];
+
   // Duplicate for seamless scroll
-  const duplicatedSponsors = [...sponsors, ...sponsors];
+  const duplicatedSponsors = [...sponsors, ...sponsorsClone];
 
   useEffect(() => {
     setIsVisible(true);
