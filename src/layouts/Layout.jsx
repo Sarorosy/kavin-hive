@@ -13,7 +13,7 @@ export default function Layout() {
       <Header onBookTourClick={()=> setContactFormOpen(true)} />
       <main className="flex-grow w-full pt-6" id="scroll-container">
         <div className="container m-0 max-w-[100%]">
-          <Outlet />
+          <Outlet context={{ setContactFormOpen }}  />
         </div>
       </main>
       <Footer />
