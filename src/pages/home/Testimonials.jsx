@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const testimonials = [
   {
     quote:
@@ -8,6 +7,7 @@ const testimonials = [
     name: "Juliana Doe",
     role: "Marketing Manager",
     image: "https://randomuser.me/api/portraits/women/44.jpg",
+    class: "bg-[#dae2e5]"
   },
   {
     quote:
@@ -15,6 +15,7 @@ const testimonials = [
     name: "Bastian Doe",
     role: "Software Engineer",
     image: "https://randomuser.me/api/portraits/men/46.jpg",
+    class: "bg-[#ede6e7]"
   },
   {
     quote:
@@ -22,6 +23,7 @@ const testimonials = [
     name: "Sarah Doe",
     role: "Freelance Consultant",
     image: "https://randomuser.me/api/portraits/women/47.jpg",
+    class: "bg-[#92031f] text-white"
   },
   {
     quote:
@@ -29,9 +31,9 @@ const testimonials = [
     name: "Albert Doe",
     role: "Startup Founder",
     image: "https://randomuser.me/api/portraits/men/48.jpg",
+    class: "bg-[#544c41] text-white "
   },
 ];
-
 
 export default function Testimonials() {
   return (
@@ -61,11 +63,10 @@ export default function Testimonials() {
               <p className="text-black text-3xl mb-4">❝</p>
               <p className="text-gray-600 mb-6">{t.quote}</p>
               <div className="flex items-center gap-4 mt-auto">
-                <img
-                  src={t.image}
-                  alt={t.name}
-                  className="w-10 h-10 rounded-full object-cover"
-                />
+                
+                <div className={`w-10 h-10 rounded-full object-cover font-serif flex items-center justify-center ${t.class}`}>
+                {t.name.charAt(0)}
+                </div>
                 <div>
                   <p className="font-semibold">{t.name}</p>
                   <p className="text-sm text-gray-500">{t.role}</p>
@@ -75,35 +76,7 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Footer */}
-        {/* Footer */}
-<div className="mt-10 flex justify-center">
-  <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-xl shadow-sm">
-    <div className="flex -space-x-3">
-      <img
-        src="https://randomuser.me/api/portraits/men/30.jpg"
-        alt="customer1"
-        className="w-8 h-8 rounded-full border-2 border-white"
-      />
-      <img
-        src="https://randomuser.me/api/portraits/women/31.jpg"
-        alt="customer2"
-        className="w-8 h-8 rounded-full border-2 border-white"
-      />
-      <img
-        src="https://randomuser.me/api/portraits/men/32.jpg"
-        alt="customer3"
-        className="w-8 h-8 rounded-full border-2 border-white"
-      />
-    </div>
-    <div>
-      <p className="font-semibold">60k+</p>
-      <p className="text-sm text-gray-500">Happy customers</p>
-    </div>
-    <button className="ml-auto text-lg">→</button>
-  </div>
-</div>
-
+        
       </div>
     </section>
   );

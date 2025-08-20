@@ -76,56 +76,107 @@ const offerings = [
   }
 ];
 
-// Dropdown
-const Dropdown = ({ label, items, selected, setSelected, icon, open, setOpen, id }) => {
+// Simple City Dropdown Component
+const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
   const ref = useRef();
+  const cities = Object.keys(cityBranches);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
-        setOpen(null);
+        setIsOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [setOpen]);
+  }, [setIsOpen]);
 
   return (
     <div className="relative" ref={ref}>
       <div
-        onClick={() => setOpen(open === id ? null : id)}
+        onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full border border-gray-200 rounded-xl px-4 py-3 cursor-pointer hover:border-black transition"
       >
         <div className="flex items-center gap-2">
-          {icon && <span className="text-gray-400">{icon}</span>}
+          <MapPin className="w-4 h-4 text-gray-400" />
           <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-400"}`}>
-            {selected || label}
+            {selected || "Choose a City"}
           </span>
         </div>
-        {open === id ? (
+        {isOpen ? (
           <ChevronUp className="w-4 h-4 text-gray-400" />
         ) : (
           <ChevronDown className="w-4 h-4 text-gray-400" />
         )}
       </div>
 
-      {open === id && (
+      {isOpen && (
         <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
-          {items.map((item, idx) => (
+          {cities.map((city, idx) => (
             <div
               key={idx}
               onClick={() => {
-                setSelected(item.title || item);
-                setOpen(null);
+                setSelected(city);
+                setIsOpen(false);
+              }}
+              className="px-4 py-3 hover:bg-gray-50 cursor-pointer"
+            >
+              <div className="text-sm font-medium text-gray-900">{city}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Simple Offering Dropdown Component
+const OfferingDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [setIsOpen]);
+
+  return (
+    <div className="relative" ref={ref}>
+      <div
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full border border-gray-200 rounded-xl px-4 py-3 cursor-pointer hover:border-black transition"
+      >
+        <div className="flex items-center gap-2">
+          <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-400"}`}>
+            {selected || "Choose a Solution"}
+          </span>
+        </div>
+        {isOpen ? (
+          <ChevronUp className="w-4 h-4 text-gray-400" />
+        ) : (
+          <ChevronDown className="w-4 h-4 text-gray-400" />
+        )}
+      </div>
+
+      {isOpen && (
+        <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
+          {offerings.map((offering, idx) => (
+            <div
+              key={idx}
+              onClick={() => {
+                setSelected(offering.title);
+                setIsOpen(false);
               }}
               className="px-4 py-3 hover:bg-gray-50 cursor-pointer flex items-center gap-3"
             >
-              {item.icon && <img src={office} alt="" className="w-6 h-6" />}
+              <img src={office} alt="" className="w-6 h-6" />
               <div>
-                <div className="text-sm font-medium text-gray-900">
-                  {item.title || item}
-                </div>
-                {item.subtitle && <div className="text-xs text-gray-500">{item.subtitle}</div>}
+                <div className="text-sm font-medium text-gray-900">{offering.title}</div>
+                <div className="text-xs text-gray-500">{offering.subtitle}</div>
               </div>
             </div>
           ))}
@@ -138,10 +189,18 @@ const Dropdown = ({ label, items, selected, setSelected, icon, open, setOpen, id
 const Hero = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedOffering, setSelectedOffering] = useState("");
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
+  const [offeringDropdownOpen, setOfferingDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    console.log("Selected City:", selectedCity);
+    console.log("Selected Offering:", selectedOffering);
+  }, [selectedCity, selectedOffering]);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden"
+    id="curve"
+    >
       {/* Swiper Background */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -170,10 +229,10 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <button className="custom-prev cursor-pointer z-99 absolute left-4 sm:right-24 bottom-2 sm:bottom-4 z-10 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+      <button className="custom-prev cursor-pointer  absolute left-4 sm:right-24 bottom-12 z-99 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
         <MoveLeft />
       </button>
-      <button className="custom-next cursor-pointer z-99 absolute left-20 sm:right-6 bottom-2 sm:bottom-4 z-10 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+      <button className="custom-next cursor-pointer  absolute left-20 sm:right-6 bottom-12 z-99 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
         <MoveRight />
       </button>
 
@@ -194,24 +253,17 @@ const Hero = () => {
           {/* Right Side Form */}
           <div className="bg-white rounded-2xl p-6 w-full max-w-lg ml-auto space-y-6">
             <div className="space-y-4">
-              <Dropdown
-                id="city"
-                label="Choose a City"
-                items={Object.keys(cityBranches)}
+              <CityDropdown
                 selected={selectedCity}
                 setSelected={setSelectedCity}
-                icon={<MapPin className="w-4 h-4" />}
-                open={openDropdown}
-                setOpen={setOpenDropdown}
+                isOpen={cityDropdownOpen}
+                setIsOpen={setCityDropdownOpen}
               />
-              <Dropdown
-                id="offering"
-                label="Choose a Solution"
-                items={offerings}
+              <OfferingDropdown
                 selected={selectedOffering}
                 setSelected={setSelectedOffering}
-                open={openDropdown}
-                setOpen={setOpenDropdown}
+                isOpen={offeringDropdownOpen}
+                setIsOpen={setOfferingDropdownOpen}
               />
             </div>
 
@@ -220,9 +272,9 @@ const Hero = () => {
               {workspaceTypes.map((type, i) => (
                 <div
                   key={i}
-                  className="flex flex-col items-center p-2 rounded-xl hover:bg-gray-900 hover:text-white cursor-pointer"
+                  className="flex flex-col items-center p-2 rounded-xl hover:bg-gray-900 hover:text-white cursor-pointer group"
                 >
-                  <div className="p-3 bg-gray-100 rounded-lg mb-1">{type.icon}</div>
+                  <div className="p-3 bg-gray-100 rounded-lg mb-1 group-hover:text-black ">{type.icon}</div>
                   <div className="text-xs font-medium">{type.label}</div>
                   <div className="text-xs">{type.sublabel}</div>
                 </div>
