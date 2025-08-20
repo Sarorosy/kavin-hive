@@ -17,6 +17,7 @@
 
 body {
   font-family: 'CircularStd', sans-serif;
+  scroll-behavior: smooth;
 }
 
 .crimson {

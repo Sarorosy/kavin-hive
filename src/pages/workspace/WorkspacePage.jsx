@@ -30,6 +30,7 @@ import {
   benefits,
 } from "../../data/workspaceData";
 import StartWithUs from "./StartWithUs";
+import LearnMoreForm from "../../components/LearnMoreForm";
 
 const WorkspacePage = () => {
   const { slug } = useParams();
@@ -180,9 +181,9 @@ const WorkspacePage = () => {
               </p>
 
               {/* CTA */}
-              <button className="w-full bg-gradient-to-r from-black to-gray-800 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg hover:from-gray-800 hover:to-black transition-all duration-300 font-semibold transform hover:scale-105 shadow-lg text-sm sm:text-base">
+              <a href="#Form" className="w-full bg-gradient-to-r from-black to-gray-800 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg hover:from-gray-800 hover:to-black transition-all duration-300 font-semibold transform hover:scale-105 shadow-lg text-sm sm:text-base">
                 Get Started Now
-              </button>
+              </a>
 
               {/* Benefits */}
               <div className="flex flex-col sm:flex-row items-center justify-center mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500 gap-2 sm:gap-4">
@@ -414,9 +415,9 @@ const WorkspacePage = () => {
             className=" cursor-pointer px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-black to-gray-800 text-white font-bold rounded-xl hover:from-gray-800 hover:to-black hover:scale-105 transition-all duration-300 shadow-2xl text-lg">
               Schedule Your Free Tour
             </button>
-            <button className="px-10 py-5 border-2 border-black text-black font-bold rounded-xl hover:bg-black hover:text-white transition-all duration-300 text-lg">
+            <a href="#Form" className="px-10 py-5 border-2 border-black text-black font-bold rounded-xl hover:bg-black hover:text-white transition-all duration-300 text-lg">
               Get Custom Quote
-            </button>
+            </a>
           </div>
 
           <div className="flex items-center justify-center space-x-8 text-sm text-gray-500">
@@ -436,28 +437,8 @@ const WorkspacePage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black text-white py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold mb-4">The Hive</h3>
-            <p className="text-gray-400 text-lg mb-8">
-              Where Innovation Meets Collaboration
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-12">
-              <div className="flex items-center bg-white/10 px-6 py-3 rounded-lg">
-                <Phone className="w-5 h-5 mr-3" />
-                <span className="font-medium">+91 9876543210</span>
-              </div>
-              <div className="flex items-center bg-white/10 px-6 py-3 rounded-lg">
-                <Mail className="w-5 h-5 mr-3" />
-                <span className="font-medium">hello@thehive.co.in</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
+      <LearnMoreForm />
     </div>
   );
 };
