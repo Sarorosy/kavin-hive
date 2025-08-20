@@ -113,27 +113,27 @@ const Header = ({ onBookTourClick }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (infoRef.current && !infoRef.current.contains(event.target)) {
-        setInfoOpen(false);
-      }
-      if (centresRef.current && !centresRef.current.contains(event.target)) {
-        setCentresOpen(false);
-        setHoveredCity("");
-      }
-      if (
-        workspacesRef.current &&
-        !workspacesRef.current.contains(event.target)
-      ) {
-        setWorkspacesOpen(false);
-        setHoveredOffering("");
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (infoRef.current && !infoRef.current.contains(event.target)) {
+  //       setInfoOpen(false);
+  //     }
+  //     if (centresRef.current && !centresRef.current.contains(event.target)) {
+  //       setCentresOpen(false);
+  //       setHoveredCity("");
+  //     }
+  //     if (
+  //       workspacesRef.current &&
+  //       !workspacesRef.current.contains(event.target)
+  //     ) {
+  //       setWorkspacesOpen(false);
+  //       setHoveredOffering("");
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
   return (
     <header
@@ -180,7 +180,7 @@ const Header = ({ onBookTourClick }) => {
                 WorkSpaces
               </span>
               {workspacesOpen && (
-                <div className="absolute left-0 top-7 mt-2 w-96 bg-black text-white rounded-sm z-20 shadow-xl">
+                <div className="absolute left-0 top-7 mt-2 w-xl bg-black text-white rounded-sm z-20 shadow-xl">
                   <div className="absolute top-0 left-1 -translate-y-full w-0 h-0 border-l-[10px] border-r-[10px] border-b-[20px] border-l-transparent border-r-transparent border-b-black"></div>
                   <div className="absolute top-0 left-5 -translate-y-full w-full h-0  border-b-[20px] opacity-0 bg-transparent z-19"></div>
                   <div className="flex">
@@ -442,7 +442,10 @@ const Header = ({ onBookTourClick }) => {
           {/* WorkSpaces in mobile - Click to toggle */}
           <div className="space-y-2">
             <button
-              onClick={() => setWorkspacesOpen(!workspacesOpen)}
+              onClick={() => {
+                setCentresOpen(false);
+                setWorkspacesOpen(!workspacesOpen)
+              }}
               className="block w-full text-left hover:underline transition-all duration-200"
             >
               WorkSpaces
@@ -450,17 +453,17 @@ const Header = ({ onBookTourClick }) => {
             {workspacesOpen && (
               <div className="pl-4 space-y-2 text-sm">
                 {offerings.map((offering) => (
-                  <div key={offering.title} className="space-y-1">
+                  <div key={offering.title} className="space-y-2">
                     <div
                       className={`font-medium ${
-                        isScrolled ? "text-gray-700" : "text-gray-200"
+                        isScrolled ? "text-gray-900" : "text-gray-900"
                       }`}
                     >
                       {offering.title}
                     </div>
                     <div
                       className={`text-xs mb-1 ${
-                        isScrolled ? "text-gray-500" : "text-gray-300"
+                        isScrolled ? "text-gray-900" : "text-gray-900"
                       }`}
                     >
                       {offering.subtitle}
@@ -468,9 +471,14 @@ const Header = ({ onBookTourClick }) => {
                     {offering.items.map((item, index) => (
                       <button
                         key={index}
-                        onClick={() => navigate(`/workspaces/${item.slug}`)}
-                        className={`block w-full text-left pl-2 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer ${
-                          isScrolled ? "text-gray-600" : "text-gray-300"
+                        onClick={(e) => {
+                          e.stopPropagation(); // prevent dropdown close
+                          setWorkspacesOpen(false)
+                          navigate(`/workspaces/${item.slug}`);
+                          setMobileOpen(false)
+                        }}
+                        className={`block w-full text-left pl-2 underline transition-all duration-200 bg-transparent border-none cursor-pointer my-2 ${
+                          isScrolled ? "text-gray-900" : "text-gray-900"
                         }`}
                       >
                         {item.name}
@@ -485,7 +493,10 @@ const Header = ({ onBookTourClick }) => {
           {/* Centres in mobile - Click to toggle */}
           <div className="space-y-2">
             <button
-              onClick={() => setCentresOpen(!centresOpen)}
+              onClick={() => {
+                setWorkspacesOpen(false)
+                setCentresOpen(!centresOpen)
+              }}
               className="block w-full text-left hover:underline transition-all duration-200"
             >
               Centres
@@ -496,7 +507,7 @@ const Header = ({ onBookTourClick }) => {
                   <div key={city} className="space-y-1">
                     <div
                       className={`font-medium ${
-                        isScrolled ? "text-gray-700" : "text-gray-200"
+                        isScrolled ? "text-gray-900" : "text-gray-900"
                       }`}
                     >
                       {city}
@@ -504,9 +515,14 @@ const Header = ({ onBookTourClick }) => {
                     {data.branches.map((branch, index) => (
                       <button
                         key={index}
-                        onClick={() => navigate(branch.route)}
+                        onClick={(e) => {
+                          e.stopPropagation(); // prevent dropdown close
+                          navigate(branch.route);
+                          setCentresOpen(false)
+                          setMobileOpen(false)
+                        }}
                         className={`block w-full text-left pl-2 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer ${
-                          isScrolled ? "text-gray-600" : "text-gray-300"
+                          isScrolled ? "text-gray-900" : "text-gray-900"
                         }`}
                       >
                         {branch.name}
@@ -521,7 +537,11 @@ const Header = ({ onBookTourClick }) => {
           {/* Info Dropdown in mobile - Click to toggle */}
           <div className="space-y-2">
             <button
-              onClick={() => setInfoOpen(!infoOpen)}
+              onClick={() => {
+                setInfoOpen(!infoOpen);
+                setWorkspacesOpen(false);
+                setCentresOpen(false)
+              }}
               className="block w-full text-left hover:underline transition-all duration-200"
             >
               Info
@@ -529,25 +549,41 @@ const Header = ({ onBookTourClick }) => {
             {infoOpen && (
               <div className="pl-4 space-y-1 text-sm">
                 <button
-                  onClick={() => navigate("/news")}
+                  onClick={() => {
+                    navigate("/news");
+                    setInfoOpen(false);
+                    setMobileOpen(false);
+                  }}
                   className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
                 >
                   News
                 </button>
                 <button
-                  onClick={() => navigate("/awards")}
+                  onClick={() => {
+                    navigate("/awards");
+                    setInfoOpen(false);
+                    setMobileOpen(false);
+                  }}
                   className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
                 >
                   Awards
                 </button>
                 <button
-                  onClick={() => navigate("/team")}
+                  onClick={() => {
+                    navigate("/team");
+                    setInfoOpen(false);
+                    setMobileOpen(false);
+                  }}
                   className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
                 >
                   Team
                 </button>
                 <button
-                  onClick={() => navigate("/careers")}
+                  onClick={() => {
+                    navigate("/careers");
+                    setInfoOpen(false);
+                    setMobileOpen(false);
+                  }}
                   className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
                 >
                   Careers
