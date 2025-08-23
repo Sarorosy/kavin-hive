@@ -6,6 +6,10 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./utils/idb.jsx";
 import { Tooltip } from "react-tooltip";
 
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+
+
 function App() {
   return (
     <>

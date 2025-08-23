@@ -1,69 +1,13 @@
 import React, { useState } from "react";
 import { Monitor, Wifi, Snowflake, ChevronRight } from "lucide-react";
-import one from "../../assets/featured/1.jpg";
-import two from "../../assets/featured/2.jpg";
-import three from "../../assets/featured/3.jpg";
-import four from "../../assets/featured/4.jpg";
-import five from "../../assets/featured/5.jpg";
-import six from "../../assets/featured/6.jpg";
+
+import { useNavigate } from "react-router-dom";
+import { allSpaces } from "../../data/productData";
 
 const FeaturedSpaces = () => {
-  const allSpaces = [
-    {
-      img: one,
-      title: "Dedicated Desk - Type A",
-      desc: "Ideal for personal, semi private.",
-      desk: "1 Desk",
-      price: "$25",
-      unit: "/ Per Day",
-      category: "Dedicated Desk",
-    },
-    {
-      img: two,
-      title: "Dedicated Desk - Type B",
-      desc: "Ideal for personal, high privacy.",
-      desk: "1 Desk",
-      price: "$50",
-      unit: "/ Per Day",
-      category: "Dedicated Desk",
-    },
-    {
-      img: three,
-      title: "Open Spaces - Type A",
-      desc: "Ideal for personal, open spaces.",
-      desk: "1 Desk",
-      price: "$15",
-      unit: "/ Per Day",
-      category: "Open Spaces",
-    },
-    {
-      img: four,
-      title: "Open Spaces - Type B",
-      desc: "Ideal for team, open spaces.",
-      desk: "4 Desk",
-      price: "$35",
-      unit: "/ Per Day",
-      category: "Open Spaces",
-    },
-    {
-      img: five,
-      title: "Private Office - Type A",
-      desc: "Ideal for small office, high privacy.",
-      desk: "10 Desk",
-      price: "$1,500",
-      unit: "/ Per Month",
-      category: "Private Office",
-    },
-    {
-      img: six,
-      title: "Meeting Room - Type A",
-      desc: "Ideal for small team, high privacy.",
-      desk: "6 Desk",
-      price: "$100",
-      unit: "/ Per Day",
-      category: "Meeting Room",
-    },
-  ];
+  
+
+const navigate = useNavigate();
 
   const categories = [
     "All",
@@ -110,7 +54,8 @@ const FeaturedSpaces = () => {
               {cat}
             </button>
           ))}
-          <button className="ml-auto px-4 py-2 border rounded-lg hover:bg-gray-100 flex items-center">
+          <button 
+          className="ml-auto px-4 py-2 border rounded-lg hover:bg-gray-100 flex items-center">
             View All <ChevronRight size={15} className="ml-2" />
           </button>
         </div>
@@ -147,7 +92,10 @@ const FeaturedSpaces = () => {
                 {/* Price and Button */}
                 <div className="flex items-center justify-end mt-5">
                 
-                  <button className="bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white">
+                  <button 
+                  disabled={space.route.trim() == ""}
+                  onClick={()=>{navigate(space.route)}}
+                  className={`bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white ${space.route.trim() != "" && "cursor-pointer"}`}>
                     View Details
                   </button>
                 </div>
