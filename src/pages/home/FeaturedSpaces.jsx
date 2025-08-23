@@ -62,7 +62,7 @@ const navigate = useNavigate();
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          {filteredSpaces.map((space, idx) => (
+          {filteredSpaces.slice(0, 6).map((space, idx) => (
             <div
               key={idx}
               className="bg-white rounded-2xl overflow-hidden  border border-gray-200 p-1 "
