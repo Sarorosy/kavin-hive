@@ -14,12 +14,16 @@ const RelatedProducts = ({ location, currentRoute }) => {
       item.route !== currentRoute
   );
 
+
   if (location !== "all") {
-    filtered = filtered.filter((item) => item.location === location);
+    filtered = filtered.filter((item) => item.location == location);
   }
 
   // If no related products, return null
-  if (filtered.length === 0) return null;
+  if (filtered.length === 0) {
+    return null
+  };
+
 
   return (
     <div className="my-6 max-w-6xl mx-auto">

@@ -21,6 +21,7 @@ import four from '../../assets/featured/4.jpg';
 import five from '../../assets/featured/5.jpg';
 import six from '../../assets/featured/6.jpg';
 import ContactForm from "../../components/ContactForm";
+import RelatedProducts from "../product/RelatedProducts";
 
 function Center() {
   const { city, branch } = useParams();
@@ -161,6 +162,7 @@ function Center() {
 
       <ChoosePreference cityData={cityData} centersData={centersData}/>
       <Viewer360 images={panoramas} />
+      <RelatedProducts location={city.charAt(0).toUpperCase() + city.slice(1)} currentRoute={""} />
       <ContactForm type="regular" />
       <Faq />
     </div>
