@@ -18,6 +18,8 @@ import NotFound from "../components/NotFound";
 import WorkspacePage from "../pages/workspace/WorkspacePage";
 import ProductPage from "../pages/product/ProductPage";
 import ExplorePage from "../pages/explore/ExplorePage";
+import RefundPolicy from "../pages/RefundPolicy";
+import TermsAndConditions from "../pages/TermsAndConditions";
 
 export default function AppRouter() {
   return (
@@ -40,6 +42,10 @@ export default function AppRouter() {
             <Route path="/product/:slug" element={<ProductPage />} />
 
             <Route path="/explore/:location/:offering" element={<ExplorePage />} />
+
+
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
 
             <Route path="*" element={<NotFound />} />
             <Route path="/404" element={<NotFound />} />

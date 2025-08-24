@@ -23,7 +23,7 @@ const RelatedProducts = ({ location, currentRoute }) => {
 
   return (
     <div className="my-6 max-w-6xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-2xl font-bold mb-6 ml-10">
         {location === "all"
           ? "Explore more spaces"
           : `More spaces in ${location}`}

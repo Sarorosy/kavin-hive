@@ -1,8 +1,14 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import logoblack from '../assets/logo-black.jpg'
 import { FloatingWhatsApp } from "react-floating-whatsapp";
+import { useNavigate } from "react-router-dom";
+import { citiesData } from "../data/centersData";
 
 export default function Footer() {
+    const navigate = useNavigate();
+
+    
+
     return (
         <footer className="bg-black text-white py-16 px-6  ">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -25,36 +31,41 @@ export default function Footer() {
                 <div>
                     <h3 className="text-xl font-semibold mb-4 text-white">Navigate</h3>
                     <ul className="space-y-2 text-gray-400 text-sm">
-                        {["Home", "About Us", "Careers", "Blogs", "Terms & Conditions", "Refund Policy"].map(
-                            (item) => (
-                                <li
-                                    key={item}
-                                    className="hover:text-white hover:translate-x-1 transition duration-200 cursor-pointer"
-                                >
-                                    {item}
-                                </li>
-                            )
-                        )}
+                        {[
+                            { title: "Home", slug: "/" },
+                            { title: "Careers", slug: "/" },
+                            { title: "Blogs", slug: "/" },
+                            { title: "Terms & Conditions", slug: "/terms-and-conditions" },
+                            { title: "Refund Policy", slug: "/refund-policy" },
+                        ].map((item) => (
+                            <li
+                                key={item.slug}
+                                className="hover:text-white hover:translate-x-1 transition duration-200 cursor-pointer"
+                            >
+                                <button
+                                    onClick={() => { navigate(item.slug) }}
+                                >{item.title}</button>
+                            </li>
+                        ))}
                     </ul>
+
                 </div>
 
                 {/* Location Links */}
                 <div>
                     <h3 className="text-xl font-semibold mb-4 text-white">Locations</h3>
                     <ul className="space-y-2 text-gray-400 text-sm">
-                        {[
-                            "The Hive at Whitefield, Bangalore",
-                            "The Hive at Anna Nagar, Chennai",
-                            "The Hive at OMR, Chennai",
-                            "The Hive at Gachibowli, Hyderabad",
-                            "The Hive at The Mills, Pune",
-                            "The Hive at SKCL Guindy, Chennai",
-                            "The Hive at Prestige Tech Platina, Bengaluru",
-                        ].map((loc) => (
-                            <li key={loc} className="hover:text-white transition duration-200">
-                                {loc}
-                            </li>
-                        ))}
+                        {Object.values(citiesData).flatMap((city) =>
+                            city.branches.map((branch) => (
+                                <li
+                                    key={branch.route}
+                                    onClick={() => navigate(branch.route)}
+                                    className="hover:text-white hover:translate-x-1 transition duration-200 cursor-pointer"
+                                >
+                                    {branch.name}
+                                </li>
+                            ))
+                        )}
                     </ul>
                 </div>
 
@@ -80,16 +91,16 @@ export default function Footer() {
                     <div className="mt-6">
                         <h4 className="text-md font-semibold mb-3 text-white">Follow us</h4>
                         <div className="flex gap-4">
-                            <a href="#" className="text-gray-400 hover:text-white transition">
+                            <a href="https://www.facebook.com/hiveworkspaces/" target="_blank" className="text-gray-400 hover:text-white transition">
                                 <Facebook />
                             </a>
-                            <a href="#" className="text-gray-400 hover:text-white transition">
+                            <a href="https://www.instagram.com/hiveworkspaces/" target="_blank" className="text-gray-400 hover:text-white transition">
                                 <Instagram />
                             </a>
-                            <a href="#" className="text-gray-400 hover:text-white transition">
+                            <a href="https://www.linkedin.com/company/hiveworkspaces" target="_blank" className="text-gray-400 hover:text-white transition">
                                 <Linkedin />
                             </a>
-                            <a href="#" className="text-gray-400 hover:text-white transition">
+                            <a href="https://twitter.com/hiveworkspaces?s=20" target="_blank" className="text-gray-400 hover:text-white transition">
                                 <Twitter />
                             </a>
                         </div>
@@ -105,18 +116,18 @@ export default function Footer() {
                 </p>
             </div>
             <FloatingWhatsApp
-        phoneNumber="918072075487"
-        accountName="The Hive"
-        avatar="/Hive-Favicon.png"
-        statusMessage="Typically replies in minutes"
-        chatMessage="Hi 👋! How can we help?"
-        placeholder="Type your message here..."
-        allowClickAway={false}
-        notification
-        notificationSound
-        darkMode={false}
-        allowEsc={false}
-      />
+                phoneNumber="918072075487"
+                accountName="The Hive"
+                avatar="/Hive-Favicon.png"
+                statusMessage="Typically replies in minutes"
+                chatMessage="Hi 👋! How can we help?"
+                placeholder="Type your message here..."
+                allowClickAway={false}
+                notification
+                notificationSound
+                darkMode={false}
+                allowEsc={false}
+            />
         </footer>
     );
 }

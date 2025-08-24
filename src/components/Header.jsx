@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Calendar, User, Phone, Menu, X } from "lucide-react";
 import logoTransparent from "../assets/logo-transparent.png";
+import { citiesData } from "../data/centersData";
 
 import chennai from "../assets/chennai.png";
 import bangalore from "../assets/bangalore.png";
@@ -20,56 +21,7 @@ const Header = ({ onBookTourClick }) => {
   const infoRef = useRef(null);
   const centresRef = useRef(null);
   const workspacesRef = useRef(null);
-  const citiesData = {
-    Chennai: {
-      image: chennai,
-      branches: [
-        {
-          name: "The Hive at Anna Nagar, Chennai",
-          route: "/chennai/anna-nagar",
-        },
-        {
-          name: "The Hive at OMR, Chennai",
-          route: "/chennai/omr",
-        },
-        {
-          name: "The Hive at SKCL Guindy, Chennai",
-          route: "/chennai/skcl-guindy",
-        },
-      ],
-    },
-    Bangalore: {
-      image: bangalore,
-      branches: [
-        {
-          name: "The Hive at Whitefield, Bangalore",
-          route: "/bangalore/whitefield",
-        },
-        {
-          name: "The Hive at PTP, Bengaluru",
-          route: "/bangalore/ptp",
-        },
-      ],
-    },
-    Hyderabad: {
-      image: hyderabad,
-      branches: [
-        {
-          name: "The Hive at Gachibowli, Hyderabad",
-          route: "/hyderabad/gachibowli",
-        },
-      ],
-    },
-    Pune: {
-      image: pune,
-      branches: [
-        {
-          name: "The Hive at Mills, Pune",
-          route: "/pune/mills",
-        },
-      ],
-    },
-  };
+  
 
   // Offerings data
   const offerings = [
@@ -432,12 +384,7 @@ const Header = ({ onBookTourClick }) => {
           }
         `}
         >
-          <button
-            onClick={() => navigate("/offerings")}
-            className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
-          >
-            Offerings
-          </button>
+          
 
           {/* WorkSpaces in mobile - Click to toggle */}
           <div className="space-y-2">
