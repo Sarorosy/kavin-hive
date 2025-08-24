@@ -377,7 +377,7 @@ const WorkspacePage = () => {
               return (
                 <div
                   key={index}
-                  className="text-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors duration-300"
+                  className="text-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 border border-transparent hover:border-black transition-colors duration-300"
                 >
                   <div className="w-16 h-16 bg-black/10 rounded-xl mx-auto mb-4 flex items-center justify-center">
                     <Icon className="w-8 h-8 text-black" />

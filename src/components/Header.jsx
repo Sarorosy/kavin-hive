@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Calendar, User, Phone, Menu, X } from "lucide-react";
+import { Calendar, User, Phone, Menu, X, Briefcase, BriefcaseBusiness } from "lucide-react";
 import logoTransparent from "../assets/logo-transparent.png";
 import { citiesData } from "../data/centersData";
 
@@ -293,28 +293,16 @@ const Header = ({ onBookTourClick }) => {
 
                   <div className="grid grid-cols-2 px-4 py-3 space-y-1">
                     <button
-                      onClick={() => navigate("/news")}
+                      onClick={() => navigate("/blog")}
                       className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer text-white"
                     >
-                      News
-                    </button>
-                    <button
-                      onClick={() => navigate("/awards")}
-                      className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer text-white"
-                    >
-                      Awards
-                    </button>
-                    <button
-                      onClick={() => navigate("/team")}
-                      className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer text-white"
-                    >
-                      Team
+                      Blog
                     </button>
                     <button
                       onClick={() => navigate("/careers")}
-                      className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer text-white"
+                      className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer text-white flex items-center"
                     >
-                      Careers
+                     <BriefcaseBusiness className="mr-1  " size={14} /> Careers
                     </button>
                   </div>
                 </div>
@@ -493,33 +481,13 @@ const Header = ({ onBookTourClick }) => {
               <div className="pl-4 space-y-1 text-sm">
                 <button
                   onClick={() => {
-                    navigate("/news");
+                    navigate("/blog");
                     setInfoOpen(false);
                     setMobileOpen(false);
                   }}
                   className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
                 >
-                  News
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/awards");
-                    setInfoOpen(false);
-                    setMobileOpen(false);
-                  }}
-                  className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
-                >
-                  Awards
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/team");
-                    setInfoOpen(false);
-                    setMobileOpen(false);
-                  }}
-                  className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
-                >
-                  Team
+                  Blog
                 </button>
                 <button
                   onClick={() => {

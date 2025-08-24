@@ -39,7 +39,7 @@ const Amenities = () => {
                 key={index}
                 className="flex-shrink-0 mx-3 sm:mx-6 flex flex-col items-center justify-center p-2 sm:p-3 transition-all duration-300 hover:scale-105 group min-w-[80px] sm:min-w-[100px]"
               >
-                <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-black rounded-full group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-blue-600 transition-all duration-300">
+                <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-black rounded-full group-hover:bg-orange-500 transition-all duration-300">
                   <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </div>
                 <p className="text-center text-xs sm:text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-300">

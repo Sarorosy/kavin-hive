@@ -39,7 +39,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
   };
 
   const content = (
-    <div className="bg-gray-100 mt-2">
+    <div className="bg-gray-100 mt-2" id="Form">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 rounded-2xl max-w-7xl mx-auto relative">
         {/* X button for modal */}
         {type === "modal" && (
@@ -64,7 +64,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
             </span>
             <a
               href="tel:+917022274000"
-              className="ml-3 text-blue-600 font-medium"
+              className="ml-3 text-orange-500 font-medium"
             >
               +91-70222 74000
             </a>
@@ -76,7 +76,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
             </span>
             <a
               href="mailto:hello@hiveworkspaces.com"
-              className="ml-3 text-blue-600 font-medium"
+              className="ml-3 text-orange-500 font-medium"
             >
               hello@hiveworkspaces.com
             </a>

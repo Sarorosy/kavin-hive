@@ -117,7 +117,7 @@ export const allSpaces = [
   },
   {
     img: five,
-    title: "Private Office - Type A",
+    title: "Private Office",
     desc: "A secure, private cabin tailored for small teams seeking productivity and privacy.",
     desk: "10 Desk",
     price: "$1,500",
@@ -134,7 +134,7 @@ export const allSpaces = [
   },
   {
     img: six,
-    title: "Meeting Room - Type A",
+    title: "Meeting Room",
     desc: "Premium meeting room setup with privacy, AV support, and a professional vibe.",
     desk: "6 Desk",
     price: "$100",

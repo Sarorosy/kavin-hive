@@ -64,9 +64,9 @@ export default function Testimonials() {
               <p className="text-gray-600 mb-6">{t.quote}</p>
               <div className="flex items-center gap-4 mt-auto">
                 
-                <div className={`w-10 h-10 rounded-full object-cover font-serif flex items-center justify-center ${t.class}`}>
+                {/* <div className={`w-10 h-10 rounded-full object-cover font-serif flex items-center justify-center ${t.class}`}>
                 {t.name.charAt(0)}
-                </div>
+                </div> */}
                 <div>
                   <p className="font-semibold">{t.name}</p>
                   <p className="text-sm text-gray-500">{t.role}</p>

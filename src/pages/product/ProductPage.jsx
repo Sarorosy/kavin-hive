@@ -58,7 +58,7 @@ const ProductPage = () => {
                     />
                     <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
                     <p className="text-gray-500 mt-2">{product.desc}</p>
-                    <p className="text-2xl font-bold text-green-600 mt-4">
+                    <p className="text-2xl font-bold text-green-600 mt-4 shimmer">
                         {product.price} <span className="text-sm">{product.unit}</span>
                     </p>
 
@@ -74,7 +74,7 @@ const ProductPage = () => {
                                         key={idx}
                                         className="flex items-center gap-2 bg-gray-50 p-2 rounded-lg shadow-sm"
                                     >
-                                        {Icon && <Icon className="w-5 h-5 text-blue-600" />}
+                                        {Icon && <Icon className="w-5 h-5 text-orange-500" />}
                                         <span className="text-gray-700 text-sm">{a.caption}</span>
                                     </div>
                                 );
@@ -82,7 +82,7 @@ const ProductPage = () => {
 
                             {/* ➕ More button */}
                             <div className="flex items-center justify-center bg-gray-100 p-2 rounded-lg shadow-sm transition">
-                                <span className="text-blue-600 font-medium text-sm">and More ++</span>
+                                <span className="text-orange-500 font-medium text-sm">and More ++</span>
                             </div>
                         </div>
                     </div>
@@ -100,11 +100,11 @@ const ProductPage = () => {
                         showDateDisplay={false}
                         months={2}
                         direction="vertical"
-                        rangeColors={["#14b8a6"]}
+                        rangeColors={["#ff7413"]}
                         onShownDateChange={handleShownDateChange}
                     />
 
-                    <div className="mt-4 bg-teal-100 p-3 rounded-lg">
+                    <div className="mt-4 bg-orange-100 p-3 rounded-lg">
                         <p>
                             <strong>Booking:</strong>{" "}
                             {range[0].startDate.toLocaleDateString()} to{" "}
@@ -115,7 +115,7 @@ const ProductPage = () => {
                         </p>
                     </div>
 
-                    <button className="mt-4 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700">
+                    <button className="mt-4 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
                         Book Now
                     </button>
                 </div>

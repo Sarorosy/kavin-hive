@@ -13,7 +13,8 @@ import {
   Store,
   Home,
   MoveLeft,
-  MoveRight
+  MoveRight,
+  SquareUserRound
 } from "lucide-react";
 
 import "swiper/css";
@@ -33,8 +34,8 @@ const heroImages = [
 // Workspace types
 const workspaceTypes = [
   { icon: <Building className="w-6 h-6" />, label: "Dedicated", sublabel: "Desks" },
-  { icon: <Wifi className="w-6 h-6" />, label: "Hot", sublabel: "Desks" },
-  { icon: <Home className="w-6 h-6" />, label: "Virtual", sublabel: "Office" },
+  { icon: <Home className="w-6 h-6" />, label: "Hot", sublabel: "Desks" },
+  { icon: <SquareUserRound className="w-6 h-6" />, label: "Flexi", sublabel: "Passes" },
   { icon: <Building className="w-6 h-6" />, label: "Private", sublabel: "Office" },
   { icon: <Users className="w-6 h-6" />, label: "Meeting", sublabel: "Room" },
   { icon: <Users className="w-6 h-6" />, label: "Conference", sublabel: "Room" },

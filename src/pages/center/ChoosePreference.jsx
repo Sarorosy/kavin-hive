@@ -170,7 +170,11 @@ const ChoosePreference = ({ cityData, centersData }) => {
                                         <Car size={18} title="Parking" />
                                         <Heart size={18} title="Wellness room" />
                                     </div>
-                                    <button className="mt-3 px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-md">
+                                    <button 
+                                    onClick={()=>{
+                                        window.location.href = "#Form"
+                                    }}
+                                    className="mt-3 px-4 py-2 text-sm font-medium bg-orange-500 text-white rounded-md cursor-pointer">
                                         Know more
                                     </button>
                                 </div>

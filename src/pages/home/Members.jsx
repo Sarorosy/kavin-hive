@@ -92,7 +92,7 @@ export default function Members() {
                 <img
                   src={sponsor.src}
                   alt={sponsor.alt}
-                  className="h-20 w-auto object-contain"
+                  className="h-20 w-auto object-contain members-image"
                 />
               </div>
             ))}

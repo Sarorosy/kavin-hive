@@ -55,10 +55,7 @@ const navigate = useNavigate();
               {cat}
             </button>
           ))}
-          <button 
-          className="ml-auto px-4 py-2 border rounded-lg hover:bg-gray-100 flex items-center">
-            View All <ChevronRight size={15} className="ml-2" />
-          </button>
+          
         </div>
 
         {/* Cards */}

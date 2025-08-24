@@ -81,8 +81,8 @@ export default function Footer() {
                             className="flex-1 px-4 py-1 rounded-lg text-black w-full focus:outline-none text-white"
                         />
                         <button
-                            type="submit"
-                            className="bg-blue-600 hover:bg-blue-700 transition text-white px-6 py-1 rounded-lg font-medium"
+                            type="button"
+                            className="bg-orange-500 hover:bg-orange-600 transition text-white px-6 py-1 rounded-lg font-medium"
                         >
                             Subscribe
                         </button>
@@ -112,7 +112,7 @@ export default function Footer() {
             <div className="mt-16 border-t border-white/10 pt-6 text-sm text-center text-gray-500">
                 <p>© 2025 The Hive. All rights reserved.</p>
                 <p className="mt-1">
-                    Developed by <span className="text-white font-semibold">Hive Team</span>
+                    Developed by <span className="text-white font-semibold">The Hive Marketing Team</span>
                 </p>
             </div>
             <FloatingWhatsApp

@@ -15,6 +15,10 @@ import ProductPage from "../pages/product/ProductPage";
 import ExplorePage from "../pages/explore/ExplorePage";
 import RefundPolicy from "../pages/RefundPolicy";
 import TermsAndConditions from "../pages/TermsAndConditions";
+import BlogsListPage from "../pages/blogs/BlogsListPage";
+import BlogDetails from "../pages/blogs/BlogDetails";
+import CareersListPage from "../pages/careers/CareersListPage";
+import Account from "./Account";
 
 export default function AppRouter() {
   return (
@@ -41,6 +45,13 @@ export default function AppRouter() {
 
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
+
+            <Route path="/blog" element={<BlogsListPage />} />
+            <Route path="/blog/:slug" element={<BlogDetails />} />
+
+            <Route path="/careers" element={<CareersListPage />} />
+
+            <Route path="/account" element={<Account />} />
 
             <Route path="*" element={<NotFound />} />
             <Route path="/404" element={<NotFound />} />
