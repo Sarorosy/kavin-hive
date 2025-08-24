@@ -12,6 +12,7 @@ const navigate = useNavigate();
   const categories = [
     "All",
     "Dedicated Desk",
+    "Flexi Passes",
     "Open Spaces",
     "Private Office",
     "Meeting Room",
