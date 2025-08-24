@@ -16,7 +16,8 @@ import LandlordRelationship from "../pages/landlord/LandlordRelationship";
 import Center from "../pages/center/Center";
 import NotFound from "../components/NotFound";
 import WorkspacePage from "../pages/workspace/WorkspacePage";
-import ProductPage from "../pages/pages/ProductPage";
+import ProductPage from "../pages/product/ProductPage";
+import ExplorePage from "../pages/explore/ExplorePage";
 
 export default function AppRouter() {
   return (
@@ -37,6 +38,8 @@ export default function AppRouter() {
             <Route path="/workspaces/:slug" element={<WorkspacePage />} />
 
             <Route path="/product/:slug" element={<ProductPage />} />
+
+            <Route path="/explore/:location/:offering" element={<ExplorePage />} />
 
             <Route path="*" element={<NotFound />} />
             <Route path="/404" element={<NotFound />} />

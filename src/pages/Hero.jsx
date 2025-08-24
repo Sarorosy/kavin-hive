@@ -12,9 +12,6 @@ import {
   Camera,
   Store,
   Home,
-  ChevronLeft,
-  ChevronRight,
-  ChevronLeftIcon,
   MoveLeft,
   MoveRight
 } from "lucide-react";
@@ -24,6 +21,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import office from "../assets/office-png.png";
+import { useNavigate } from "react-router-dom";
 
 // Background images
 const heroImages = [
@@ -62,16 +60,19 @@ const offerings = [
   {
     icon: "/icons/office.svg",
     title: "Office Spaces",
+    slug: "office-spaces",
     subtitle: "Ready-to-move-in or customisable private offices"
   },
   {
     icon: "/icons/coworking.svg",
     title: "Coworking Spaces",
+    slug: "coworking-spaces",
     subtitle: "Coworking spaces for the hour, day, or month"
   },
   {
     icon: "/icons/additional.svg",
     title: "Additional Solutions",
+    slug: "additional-solutions",
     subtitle: "Solutions that go beyond workspaces"
   }
 ];
@@ -131,7 +132,7 @@ const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
 };
 
 // Simple Offering Dropdown Component
-const OfferingDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
+const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOpen, setIsOpen }) => {
   const ref = useRef();
 
   useEffect(() => {
@@ -169,6 +170,7 @@ const OfferingDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
               key={idx}
               onClick={() => {
                 setSelected(offering.title);
+                setSelectedOfferingSlug(offering.slug);
                 setIsOpen(false);
               }}
               className="px-4 py-3 hover:bg-gray-50 cursor-pointer flex items-center gap-3"
@@ -189,17 +191,19 @@ const OfferingDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
 const Hero = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedOffering, setSelectedOffering] = useState("");
+  const [selectedOfferingSlug, setSelectedOfferingSlug] = useState("");
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
   const [offeringDropdownOpen, setOfferingDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("Selected City:", selectedCity);
     console.log("Selected Offering:", selectedOffering);
-  }, [selectedCity, selectedOffering]);
+  }, [selectedCity, selectedOffering,selectedOfferingSlug]);
 
   return (
     <div className="relative h-screen w-full overflow-hidden"
-    id="curve"
+      id="curve"
     >
       {/* Swiper Background */}
       <Swiper
@@ -262,6 +266,7 @@ const Hero = () => {
               <OfferingDropdown
                 selected={selectedOffering}
                 setSelected={setSelectedOffering}
+                setSelectedOfferingSlug={setSelectedOfferingSlug}
                 isOpen={offeringDropdownOpen}
                 setIsOpen={setOfferingDropdownOpen}
               />
@@ -282,9 +287,20 @@ const Hero = () => {
             </div>
 
             {/* Search Button */}
-            <button className="w-full bg-black text-white py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800">
+            <button
+              disabled={!selectedCity || !selectedOffering || !selectedOfferingSlug}
+              className={`w-full py-3 rounded-xl flex items-center justify-center gap-2 
+                  ${(!selectedCity || !selectedOffering || !selectedOfferingSlug)
+                  ? "bg-black bg-opacity-10 text-gray-400 "
+                  : "bg-black text-white hover:bg-gray-800 cursor-pointer"}`}
+
+              onClick={()=>{
+                navigate(`/explore/${selectedCity}/${selectedOfferingSlug}`)
+              }}
+            >
               <Search className="w-4 h-4" /> Search
             </button>
+
           </div>
         </div>
       </div>
