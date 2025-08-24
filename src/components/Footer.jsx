@@ -7,7 +7,7 @@ import { citiesData } from "../data/centersData";
 export default function Footer() {
     const navigate = useNavigate();
 
-    
+
 
     return (
         <footer className="bg-black text-white py-16 px-6  ">

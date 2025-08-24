@@ -4,10 +4,6 @@ import { Calendar, User, Phone, Menu, X } from "lucide-react";
 import logoTransparent from "../assets/logo-transparent.png";
 import { citiesData } from "../data/centersData";
 
-import chennai from "../assets/chennai.png";
-import bangalore from "../assets/bangalore.png";
-import hyderabad from "../assets/hyderabad.png";
-import pune from "../assets/pune.png";
 
 const Header = ({ onBookTourClick }) => {
   const navigate = useNavigate();

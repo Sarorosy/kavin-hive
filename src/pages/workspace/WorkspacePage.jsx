@@ -6,8 +6,6 @@ import {
   MapPin,
   Check,
   Star,
-  Phone,
-  Mail,
   Wifi,
   Coffee,
   Shield,
@@ -18,7 +16,6 @@ import {
   Leaf,
   Lock,
   Music,
-  ChevronDown,
   Plus,
   Minus,
 } from "lucide-react";
@@ -26,7 +23,6 @@ import {
 import {
   workspaces,
   amenities,
-  companyInfo,
   benefits,
 } from "../../data/workspaceData";
 import StartWithUs from "./StartWithUs";
