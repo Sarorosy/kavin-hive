@@ -1,6 +1,6 @@
 // src/pages/DayPass.jsx
 import React, { useState } from "react";
-import { ChevronDown, CalendarDays, Building2, MapPin } from "lucide-react";
+import { ChevronDown, CalendarDays, Building2, MapPin, Calendar } from "lucide-react";
 import { centersData } from "../../data/centersData";
 import { Wifi, Coffee, Car, Users } from "lucide-react";
 
@@ -146,8 +146,8 @@ const DayPass = () => {
                                             {branch.details}
                                         </p>
                                         {date && (
-                                            <p className="text-orange-600 font-medium">
-                                                📅 Selected Date: {date}
+                                            <p className="text-orange-600 font-medium flex items-center">
+                                                <Calendar size={15} className="text-black mr-2" /> Selected Date: {date}
                                             </p>
                                         )}
                                         <div className="flex flex-wrap gap-4 pt-3">
