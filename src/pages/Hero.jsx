@@ -302,7 +302,7 @@ const Hero = () => {
                   : "bg-black text-white hover:bg-gray-800 cursor-pointer"}`}
 
               onClick={()=>{
-                navigate(`/explore/${selectedCity}/${selectedOfferingSlug}`)
+                (selectedOfferingSlug == "day-pass") ? navigate("/day_pass") :navigate(`/explore/${selectedCity}/${selectedOfferingSlug}`)
               }}
             >
               <Search className="w-4 h-4" /> Search
