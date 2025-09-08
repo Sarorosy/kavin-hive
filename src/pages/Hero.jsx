@@ -59,16 +59,22 @@ const cityBranches = {
 
 const offerings = [
   {
-    icon: "/icons/office.svg",
-    title: "Office Spaces",
-    slug: "office-spaces",
-    subtitle: "Ready-to-move-in or customisable private offices"
+    icon: "/icons/additional.svg",
+    title: "Day Pass",
+    slug: "day-pass",
+    subtitle: "Solutions that go beyond workspaces"
   },
   {
     icon: "/icons/coworking.svg",
     title: "Coworking Spaces",
     slug: "coworking-spaces",
     subtitle: "Coworking spaces for the hour, day, or month"
+  },
+  {
+    icon: "/icons/office.svg",
+    title: "Office Spaces",
+    slug: "office-spaces",
+    subtitle: "Ready-to-move-in or customisable private offices"
   },
   {
     icon: "/icons/additional.svg",
@@ -234,10 +240,10 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <button className="custom-prev cursor-pointer  absolute left-4 sm:right-24 bottom-12 z-99 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+      <button className="custom-prev cursor-pointer  absolute left-4 sm:right-24 bottom-16 z-99 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
         <MoveLeft />
       </button>
-      <button className="custom-next cursor-pointer  absolute left-20 sm:right-6 bottom-12 z-99 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+      <button className="custom-next cursor-pointer  absolute left-20 sm:right-6 bottom-16 z-99 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
         <MoveRight />
       </button>
 
@@ -247,10 +253,10 @@ const Hero = () => {
           {/* Left Side Text */}
           <div className="text-white space-y-4">
             <h1 className="text-4xl xl:text-5xl font-bold leading-tight">
-              Where Would
+              Your Next-Gen Workspace,
               <span className="block">
-                You Like To Work
-                <span className="text-orange-400 ml-2">?</span>
+                 Managed for 
+                <span className="text-orange-400 ml-2">You</span>
               </span>
             </h1>
           </div>

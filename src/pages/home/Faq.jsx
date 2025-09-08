@@ -1,25 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const FAQS = [
   { q: "Why have co-working spaces become so popular in India?", a: "Co-working spaces offer flexibility, lower overheads, and access to a vibrant community — all of which match modern hybrid and startup ways of working." },
   { q: "How does The Hive compare to traditional office rentals?", a: "The Hive provides plug-and-play infrastructure, shorter commitments, and the ability to scale quickly without the hidden costs of a traditional lease." },
   { q: "What key features make a co-working space truly successful?", a: "Flexible layouts, reliable amenities, a strong community, professional design, and sustainable financial planning are the core ingredients." },
   { q: "Why are co-working spaces a smart choice for startups?", a: "They reduce upfront costs, let startups scale easily, and provide a professional front for meetings and investor pitches." },
-  // { q: "Are co-working spaces actually helpful for new businesses?", a: "Yes — they let founders focus on product-market fit while the workspace handles operations like IT, cleaning, and reception." },
-  // { q: "What features should I look for in a fantastic co-working space?", a: "Location, premium design, fast internet, meeting rooms, wellness zones, and events that foster networking are must-haves." },
-  // { q: "How does co-working benefit entrepreneurs?", a: "Entrepreneurs get flexibility, credibility, access to mentors and peers, and an ecosystem that helps with hiring and partnerships." },
-  // { q: "Can co-working spaces help businesses scale quickly?", a: "Absolutely — modular seating, shared services, and multi-location consistency make expansion smooth and cost-effective." },
-  // { q: "What role does location play in choosing the right co-working space?", a: "Proximity to clients, talent pools, and transport hubs reduces friction, improves attendance, and raises brand credibility." },
-  // { q: "How does The Hive build community and networking opportunities for members?", a: "Through curated events, community managers, workshops, and informal spaces that encourage cross-industry conversations." },
+  // more FAQs...
 ];
-
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <section className="bg-gray-100 py-8">
@@ -67,6 +63,16 @@ export default function Faq() {
               </div>
             );
           })}
+
+          {/* View More Button */}
+          <div className="text-center pt-6 flex justify-end">
+            <button
+              onClick={()=>{navigate("/support/faq")}}
+              className="flex items-center cursor-pointer bg-black text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition"
+            >
+              View More <ArrowRight className="ml-2" size={18}/>
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -19,6 +19,8 @@ import BlogsListPage from "../pages/blogs/BlogsListPage";
 import BlogDetails from "../pages/blogs/BlogDetails";
 import CareersListPage from "../pages/careers/CareersListPage";
 import Account from "./Account";
+import AllFaq from "../pages/faq/AllFaq";
+import DayPass from "../pages/daypass/DayPass";
 
 export default function AppRouter() {
   return (
@@ -52,6 +54,9 @@ export default function AppRouter() {
             <Route path="/careers" element={<CareersListPage />} />
 
             <Route path="/account" element={<Account />} />
+
+            <Route path="/support/faq" element={<AllFaq />} />
+            <Route path="/day_pass" element={<DayPass />} />
 
             <Route path="*" element={<NotFound />} />
             <Route path="/404" element={<NotFound />} />

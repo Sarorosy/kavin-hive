@@ -8,6 +8,7 @@ import Faq from './home/Faq'
 import Members from './home/Members'
 import Testimonials from './home/Testimonials'
 import HeroVideo from './home/HeroVideo'
+import DiscountBanner from '../components/DiscountBanner'
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
         <Stats />
         <SmallAbout />
         <FeaturedSpaces />
+        <DiscountBanner />
         <HeroVideo />
         <Amenities />
         <Faq />

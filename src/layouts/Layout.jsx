@@ -2,12 +2,17 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Layout() {
   const navigate = useNavigate();
   const[contactFormOpen, setContactFormOpen] = useState(false);
 
+  useEffect(()=>{
+    setTimeout(()=>{
+      setContactFormOpen(true);
+    },8000)
+  },[])
   return (
     <div className="min-h-screen flex flex-col w-full" >
       <Header onBookTourClick={()=> setContactFormOpen(true)} />
