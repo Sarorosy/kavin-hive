@@ -184,7 +184,7 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
               }}
               className="px-4 py-3 hover:bg-gray-50 cursor-pointer flex items-center gap-3"
             >
-              <img src={offering.slug == "day-pass" ? daypass :  offering.slug == "coworking-spaces" ? building :office} alt="" className="w-6 h-6" />
+              <img loading="lazy" src={offering.slug == "day-pass" ? daypass :  offering.slug == "coworking-spaces" ? building :office} alt="" className="w-6 h-6" />
               <div>
                 <div className="text-sm font-medium text-gray-900">{offering.title}</div>
                 <div className="text-xs text-gray-500">{offering.subtitle}</div>
