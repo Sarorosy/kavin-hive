@@ -16,6 +16,7 @@
     "framer-motion": "^12.19.2",
     "idb-keyval": "^6.2.2",
     "lucide-react": "^0.525.0",
+    "marzipano": "^0.10.2",
     "postcss": "^8.5.6",
     "react": "^19.1.0",
     "react-calendar": "^6.0.0",
